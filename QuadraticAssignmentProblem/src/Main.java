@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        String instance = "Tai20a";
-        String path = "E:\\vns\\GeneticAlgorithm\\in\\" + instance;
-        String out = "E:\\vns\\GeneticAlgorithm\\out\\" + instance + ".sol";
-        FileService.readDataFromFile(path);
+        String instance = "Tai100a";
+        String in = "E:\\GeneticAlgorithm\\in\\" + instance;
+        String out = "E:\\GeneticAlgorithm\\out\\" + instance + ".sol";
+        FileService.readDataFromFile(in);
         ArrayList<Location> locs = FileService.getLocations();
         ArrayList<Plant> plants = FileService.getPlants();
         int count = FileService.getCount();
@@ -46,15 +46,15 @@ public class Main {
         for (Plant plant : bestPlants){
             System.out.print(plant.getAssignedLoc().getId() + " ");
         }
-        ArrayList<Plant> bestPlantsRightPerm = getRightPermutation(bestPlants);
+        ArrayList<Plant> bestPlantsRightPerm = getRightPermutation(bestPlants, count);
         FileService.writeToFile(out, bestPlantsRightPerm);
 
     }
 
-    public static ArrayList<Plant> getRightPermutation(ArrayList<Plant> bestPlants){
+    public static ArrayList<Plant> getRightPermutation(ArrayList<Plant> bestPlants, int count){
         int i = 1;
         ArrayList<Plant> newBestPlants = new ArrayList<>();
-        while (i <= 20) {
+        while (i <= count) {
             for (Plant plant : bestPlants) {
                 if (plant.getAssignedLoc().getId() == i){
                     newBestPlants.add(plant);

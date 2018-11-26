@@ -36,7 +36,7 @@ public class GeneticAlg {
 
     public static ArrayList<Plant> execute(ArrayList<ArrayList<Plant>> sol){
         solutions = sol;
-        while (solutions.size() <= 2000) {
+        while (solutions.size() <= 500) {
             //Unreachable case
             if (solutions.size() == 1) {
                 ArrayList<Plant> plants = getClone(solutions.get(0));
